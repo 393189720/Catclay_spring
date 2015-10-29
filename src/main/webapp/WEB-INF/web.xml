@@ -4,6 +4,10 @@
 	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
 	<display-name>catclay</display-name>
+	
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
 
     <servlet>
 		<servlet-name>catclay</servlet-name>
@@ -15,4 +19,14 @@
 		<servlet-name>catclay</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+
+    <!--配置POST请求转为DELETE、PUT请求-->
+    <filter>
+        <filter-name>HiddenHttpMethodFilter</filter-name>
+        <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>HiddenHttpMethodFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 </web-app>
